@@ -20,6 +20,9 @@ namespace VSTUApp {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            //установка шрифта для всего приложения
+            Style = (Style)FindResource(typeof(Window));
+
         }
     }
 }
