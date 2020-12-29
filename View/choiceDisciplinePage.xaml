@@ -59,7 +59,13 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border x:Name="brdr" Padding="15" Margin="7.5,15,7.5,0" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                    <Border x:Name="brdr" 
+                                            Padding="15" 
+                                            Margin="7.5,15,7.5,0" 
+                                            TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                            Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                                         <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
                                                    HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"
@@ -105,6 +111,7 @@
                 <Button Content="Английский язык"/>
                 <Button Content="Какая то очень интересная и непонятная дисциплина с длинным названием!"/>
 
+                <!--панель редактирования-->
                 <Grid Name="createrPanel"
                       MaxWidth="800">
                     <Grid.Resources>
@@ -119,7 +126,13 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border x:Name="brdr" Padding="15" Margin="7.5,15,7.5,0" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                        <Border x:Name="brdr" 
+                                                Padding="15" 
+                                                Margin="7.5,15,7.5,0" 
+                                                TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                                Background="{TemplateBinding Background}" 
+                                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                                CornerRadius="10">
                                             <Border.BorderBrush>
                                                 <DrawingBrush Viewport="0,0,6,6" ViewportUnits="Absolute" TileMode="Tile">
                                                     <DrawingBrush.Drawing>
