@@ -63,5 +63,14 @@ namespace VSTUApp.View {
                 }
             }
         }
+
+        /// <summary>
+        /// "НАЧАТЬ ТЕСТИРОВАНИЕ"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void startTest_Click(object sender, RoutedEventArgs e) {
+            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage("toStart");
+        }
     }
 }

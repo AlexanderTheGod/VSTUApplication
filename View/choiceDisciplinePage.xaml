@@ -23,8 +23,11 @@
             <Label Content="Выбор учебной дисциплины" 
                    FontSize="35"
                    Foreground="white" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center"></Label>
+                   FontWeight="Bold"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualHeight}"/>
         </StackPanel>
 
         <!--кнопка возврата назад-->
@@ -36,7 +39,38 @@
                 Foreground="white" 
                 Background="#3E94D1" 
                 Cursor="Hand" 
-                BorderBrush="#FF3E94D1"/>
+                BorderBrush="#FF3E94D1" Click="onPreviousPage_Click">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="#8864b1e8" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                            <ColorAnimation To="#8864b1e8" 
+                                            Storyboard.TargetProperty="(Button.BorderBrush).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                            <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.BorderBrush).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
 
         <!--список учебных дисциплин-->
         <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
@@ -157,6 +191,36 @@
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="Button.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                            <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Button.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#EFEFEF" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                            <ColorAnimation To="#3E94D1" 
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>

@@ -24,11 +24,24 @@ namespace VSTUApp {
 
             //установка шрифта для всего приложения
             Style = (Style)FindResource(typeof(Window));
+
+            //главная страница
+            Page=this;
         }
+        /// <summary>
+        /// ссылка на главную страницу
+        /// </summary>
+        public static MainWindow Page;
+
         /// <summary>
         /// главная страница приложения
         /// </summary>
-        private mainPage mPage = new mainPage();
+        public static mainPage mPage = new mainPage();
+
+        ///// <summary>
+        ///// страница выбора дисциплины
+        ///// </summary>
+        //public static choiceDisciplinePage cDPape = new choiceDisciplinePage();
 
         /// <summary>
         /// Загрузка главного окна при запуске приложения

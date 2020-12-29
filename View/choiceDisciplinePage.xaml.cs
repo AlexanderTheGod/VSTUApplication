@@ -18,8 +18,26 @@ namespace VSTUApp.View {
     /// Логика взаимодействия для choiceDisciplinePage.xaml
     /// </summary>
     public partial class choiceDisciplinePage : UserControl {
-        public choiceDisciplinePage() {
+        public choiceDisciplinePage(string way) {
             InitializeComponent();
+
+            //определение следующей страницы
+            goTo = way; 
+        }
+        /// <summary>
+        /// определение следующей страницы
+        /// </summary>
+        private static string goTo;
+
+        /// <summary>
+        /// возврат на страницу назад
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void onPreviousPage_Click(object sender, RoutedEventArgs e) {
+            if (goTo == "toStart") {
+                MainWindow.Page.mainContentControl.Content = MainWindow.mPage;
+            }
         }
     }
 }

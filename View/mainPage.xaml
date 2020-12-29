@@ -96,7 +96,7 @@
                 Style="{StaticResource buttonStyle}"
                 Content="НАЧАТЬ ТЕСТИРОВАНИЕ"
                 Grid.Row="1"
-                Grid.Column="0"/>
+                Grid.Column="0" Click="startTest_Click"/>
         <Button Name="checkResults"
                 Style="{StaticResource buttonStyle}"
                 Content="РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЙ"
