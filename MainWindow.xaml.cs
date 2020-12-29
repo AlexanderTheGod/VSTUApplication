@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VSTUApp.View;
 
 namespace VSTUApp {
     /// <summary>
@@ -23,7 +24,19 @@ namespace VSTUApp {
 
             //установка шрифта для всего приложения
             Style = (Style)FindResource(typeof(Window));
+        }
+        /// <summary>
+        /// главная страница приложения
+        /// </summary>
+        private mainPage mPage = new mainPage();
 
+        /// <summary>
+        /// Загрузка главного окна при запуске приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            mainContentControl.Content = mPage;
         }
     }
 }

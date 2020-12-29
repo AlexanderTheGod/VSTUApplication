@@ -11,7 +11,7 @@
         WindowState="Maximized" 
         ResizeMode="NoResize"   
         Background="#EFEFEF"
-        WindowStyle="None">
+        WindowStyle="None" Loaded="Window_Loaded">
     <Window.Resources>
         <!--обнуление стилей для кнопок-->
         <Style TargetType="{x:Type Button}">
@@ -134,7 +134,7 @@
                         Grid.Row="1"/>
         
         <!--контент контрол для вкладок навигационной панели-->
-        <ContentControl Name="headerControl" 
+        <ContentControl Name="headerContentControl" 
                         Grid.Row="1" 
                         Grid.Column="0" 
                         Grid.ColumnSpan="2" 

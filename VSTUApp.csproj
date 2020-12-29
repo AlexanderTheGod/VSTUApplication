@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Placeholder.cs" />
     <Compile Include="SpecialColor.cs" />
     <Compile Include="View\choiceDisciplinePage.xaml.cs">
       <DependentUpon>choiceDisciplinePage.xaml</DependentUpon>
@@ -84,7 +85,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Placeholder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
