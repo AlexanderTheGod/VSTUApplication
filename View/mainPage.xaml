@@ -101,12 +101,12 @@
                 Style="{StaticResource buttonStyle}"
                 Content="РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЙ"
                 Grid.Row="2"
-                Grid.Column="0"/>
+                Grid.Column="0" Click="checkResults_Click"/>
         <Button Name="createTest"
                 Style="{StaticResource buttonStyle}"
-                Content="СОЗДАТЬ ТЕСТ"
+                Content="СОЗДАТЬ ТЕСТ/ЗАДАНИЕ"
                 Grid.Row="3"
-                Grid.Column="0"/>
+                Grid.Column="0" Click="createTest_Click"/>
         <Button Name="Exit"
                 Style="{StaticResource buttonStyle}"
                 Content="ВЫХОД"
@@ -114,7 +114,8 @@
                 Grid.Column="0" Click="Exit_Click"/>
 
         <!--правая часть основного содержимиого странцы-->
-        <Border Grid.Column="1"
+        <Border Name="recordBlock"
+                Grid.Column="1"
                 Grid.Row="1"
                 Grid.RowSpan="4"
                 Background="#EFEFEF"
@@ -231,15 +232,15 @@
                        HorizontalAlignment="Center"
                        Margin="0,0,0,15" 
                        FontFamily="Arial"/>
-                <TextBox Name="lastName"/>
-                <TextBox Name="firstName"/>
-                <TextBox Name="secondName"/>
-                <TextBox Name="group"/>
+                <TextBox Name="lastName" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged"/>
+                <TextBox Name="firstName" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged"/>
+                <TextBox Name="secondName" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged"/>
+                <TextBox Name="group" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged2"/>
 
                 <CheckBox Name="cb1" Content="Не студент" Click="CheckBox_Click"/>
                 <CheckBox Name="cb2" Content="Редактор"   Click="CheckBox_Click"/>
 
-                <Button Name="confirmData"
+                <Button x:Name="saveData"
                         Content="СОХРАНИТЬ ДАННЫЕ"
                         BorderBrush="#3E94D1" 
                         BorderThickness="2"
@@ -249,7 +250,7 @@
                         FontSize="26" 
                         Padding="15" 
                         FontFamily="Arial"
-                        Cursor="Hand">
+                        Cursor="Hand" Click="saveData_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border x:Name="brdr" 
@@ -293,5 +294,27 @@
             </StackPanel>
 
         </Border>
+
+        <Popup Name="DataPopup" 
+               IsOpen="False" 
+               StaysOpen="True" 
+               PopupAnimation="Fade" 
+               AllowsTransparency="True" 
+               Placement="Bottom" 
+               PlacementTarget="{Binding ElementName=recordBlock}" 
+               VerticalOffset="-75"
+               Cursor="Arrow"
+               HorizontalAlignment="Stretch">
+            <Label Name="DataPopupText" 
+                   Content="ДАННЫЕ СОХРАНЕНЫ"
+                   FontFamily="Arial" 
+                   FontSize="32" 
+                   FontWeight="Bold" 
+                   Foreground="White" 
+                   Background="#36D695" 
+                   Padding="20"
+                   Width="{Binding ElementName=recordBlock, Path=ActualWidth}"
+                   HorizontalContentAlignment="Center"/>
+        </Popup>
     </Grid>
 </UserControl>

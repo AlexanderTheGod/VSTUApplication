@@ -35,9 +35,9 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void onPreviousPage_Click(object sender, RoutedEventArgs e) {
-            if (goTo == "toStart") {
+            if (goTo == "toStart" || goTo == "toResults" || goTo == "toCreate") {
                 MainWindow.Page.mainContentControl.Content = MainWindow.mPage;
-            }
+            } 
         }
     }
 }
