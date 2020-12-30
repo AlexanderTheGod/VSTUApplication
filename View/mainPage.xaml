@@ -237,6 +237,44 @@
                 <TextBox Name="secondName" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged"/>
                 <TextBox Name="group" PreviewKeyDown="textBox_PreviewKeyDown" TextChanged="textBox_TextChanged2"/>
 
+                <Grid Name="passwordPlace"
+                      Visibility="Collapsed">
+                    <PasswordBox Name="password" 
+                                 Background="#EFEFEF"
+                                 BorderBrush="#3E94D1"
+                                 BorderThickness="2"
+                                 FontSize="26"
+                                 Padding="15"
+                                 FontWeight="Bold"
+                                 MaxWidth="600"
+                                 MaxLength="32"
+                                 Cursor="Hand"
+                                 Margin="0,0,0,15" GotFocus="password_GotFocus" LostFocus="password_LostFocus">
+                        <PasswordBox.Template>
+                            <ControlTemplate>
+                                <Border CornerRadius="10"
+                                        Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ScrollViewer Name="PART_ContentHost" 
+                                                  SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                </Border>
+                            </ControlTemplate>
+                        </PasswordBox.Template>
+                    </PasswordBox>
+                    <Label Name="passwordLabel"
+                           Content="Пароль"
+                           FontSize="26"
+                           Padding="15"
+                           FontWeight="Bold"
+                           MaxWidth="600"
+                           IsEnabled="false"
+                           IsHitTestVisible="False"
+                           Margin="0,2,0,15"
+                           Foreground="#64000000"/>
+                </Grid>
+
+
                 <CheckBox Name="cb1" Content="Не студент" Click="CheckBox_Click"/>
                 <CheckBox Name="cb2" Content="Редактор"   Click="CheckBox_Click"/>
 

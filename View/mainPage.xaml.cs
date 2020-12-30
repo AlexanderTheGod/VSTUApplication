@@ -50,17 +50,19 @@ namespace VSTUApp.View {
                 if (cb1.IsChecked == true) {
                     cb2.IsChecked = false;
                     group.Visibility = Visibility.Collapsed;
+                    passwordPlace.Visibility = Visibility.Collapsed;
                 } else {
                     group.Visibility = Visibility.Visible;
-                    Placeholder.add(group, "Группа");
+                    passwordPlace.Visibility = Visibility.Collapsed;
                 }
             } else {
                 if (cb2.IsChecked == true) {
                     cb1.IsChecked = false;
-                    Placeholder.add(group, "Пароль");
-                    group.Visibility = Visibility.Visible;
+                    passwordPlace.Visibility = Visibility.Visible;
+                    group.Visibility = Visibility.Collapsed;
                 } else {
-                    Placeholder.add(group, "Группа");
+                    group.Visibility = Visibility.Visible;
+                    passwordPlace.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -130,12 +132,12 @@ namespace VSTUApp.View {
                     if (lastName.Text != "" && lastName.Text != "Фамилия" &&
                         firstName.Text != "" && firstName.Text != "Имя" &&
                         secondName.Text != "" && secondName.Text != "Отчество" &&
-                        group.Text != "" && group.Text != "Пароль") {
+                        password.Password != "") {
                         Regex regFIO = new Regex("^([А-Я]|[A-Z])([а-я]|[a-z])+$");
                         if (regFIO.IsMatch(lastName.Text) &&
                             regFIO.IsMatch(firstName.Text) &&
                             regFIO.IsMatch(secondName.Text) &&
-                            group.Text==editorPassword) {
+                            password.Password == editorPassword) {
                             MainWindow.Page.currentRecord.Content = "<РЕДАКТОР>";
                             isCurrentData = true;
                         }
@@ -222,6 +224,24 @@ namespace VSTUApp.View {
             textBeforeChange = (sender as TextBox).Text;
             selectionBeforeChange = (sender as TextBox).SelectionStart;
             selectionLengthBeforeChange = (sender as TextBox).SelectionLength;
+        }
+
+        /// <summary>
+        /// получение фокуса у поля пароля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void password_GotFocus(object sender, RoutedEventArgs e) {
+            passwordLabel.Visibility = Visibility.Hidden;
+        }
+        /// <summary>
+        /// потеря фокуса у поля пароля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void password_LostFocus(object sender, RoutedEventArgs e) {
+            if(password.Password.Length==0)
+                passwordLabel.Visibility = Visibility.Visible;
         }
     }
 }
