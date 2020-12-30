@@ -82,7 +82,7 @@
             <StackPanel MaxWidth="800"
                         Margin="7.5,0">
                 <StackPanel.Resources>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button" >
                         <Setter Property="Background" Value="#EFEFEF"/>
                         <Setter Property="BorderBrush" Value="#3E94D1"/>
                         <Setter Property="Foreground" Value="#3E94D1"/>
@@ -99,7 +99,8 @@
                                             TextBlock.Foreground="{TemplateBinding Foreground}" 
                                             Background="{TemplateBinding Background}" 
                                             BorderBrush="{TemplateBinding BorderBrush}" 
-                                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="10">
                                         <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
                                                    HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"
@@ -140,6 +141,129 @@
                         </Style.Triggers>
                     </Style>
                 </StackPanel.Resources>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Name="UNI" 
+                            Style="{x:Null}"
+                            Grid.Column="0"
+                            Background="#3E94D1"
+                            BorderBrush="#3E94D1"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            IsEnabled="False"
+                            Cursor="Hand"
+                            Content="ВУЗ" Click="UNI_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                        Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="2,2,0,2"
+                                        Margin="7.5,15,0,0"
+                                        Padding="15" 
+                                        CornerRadius="10,0,0,10">
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextWrapping="Wrap"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#5CA9E0" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                        <ColorAnimation To="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Name="EGE"
+                            Style="{x:Null}"
+                            Grid.Column="1"
+                            Background="#EFEFEF"
+                            BorderBrush="#3E94D1"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Foreground="#3E94D1"
+                            Cursor="Hand"
+                            Content="ЕГЭ" Click="EGE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                        Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="2"
+                                        Margin="0,15,7.5,0"
+                                        Padding="15" 
+                                        CornerRadius="0,10,10,0">
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextWrapping="Wrap"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#5CA9E0" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                        <ColorAnimation To="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
 
                 <Button Content="Математика"/>
                 <Button Content="Английский язык"/>

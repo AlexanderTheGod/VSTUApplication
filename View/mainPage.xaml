@@ -270,7 +270,7 @@
                            MaxWidth="600"
                            IsEnabled="false"
                            IsHitTestVisible="False"
-                           Margin="0,2,0,15"
+                           Margin="2,2,0,15"
                            Foreground="#64000000"/>
                 </Grid>
 

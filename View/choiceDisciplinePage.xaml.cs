@@ -39,5 +39,33 @@ namespace VSTUApp.View {
                 MainWindow.Page.mainContentControl.Content = MainWindow.mPage;
             } 
         }
+
+        /// <summary>
+        /// выбор вкладки "ВУЗ"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UNI_Click(object sender, RoutedEventArgs e) {
+            EGE.Background = SpecialColor.mainBack();
+            EGE.Foreground = SpecialColor.mainBlue();
+            EGE.IsEnabled = true;
+            UNI.Background = SpecialColor.mainBlue();
+            UNI.Foreground = SpecialColor.white();
+            UNI.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// выбор вкладки "ЕГЭ"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EGE_Click(object sender, RoutedEventArgs e) {
+            UNI.Background = SpecialColor.mainBack();
+            UNI.Foreground = SpecialColor.mainBlue();
+            UNI.IsEnabled = true;
+            EGE.Background = SpecialColor.mainBlue();
+            EGE.Foreground = SpecialColor.white();
+            EGE.IsEnabled = false;
+        }
     }
 }
