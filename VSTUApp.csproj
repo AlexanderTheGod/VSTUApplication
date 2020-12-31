@@ -60,6 +60,9 @@
     <Compile Include="View\choiceDisciplinePage.xaml.cs">
       <DependentUpon>choiceDisciplinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\choiceTestPage.xaml.cs">
+      <DependentUpon>choiceTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\mainPage.xaml.cs">
       <DependentUpon>mainPage.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\choiceDisciplinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\choiceTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

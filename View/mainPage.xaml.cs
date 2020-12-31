@@ -164,6 +164,12 @@ namespace VSTUApp.View {
                     DataPopupText.Content = "ДАННЫЕ НЕ СОХРАНЕННЫ";
                     MainWindow.Page.currentRecord.Content = "*Учетная запись";
                 }
+
+                if ((bool)cb2.IsChecked) {
+                    password.Password = "";
+                    passwordLabel.Visibility = Visibility.Visible;
+                }
+
                 DataPopupText.Background = isCurrentData == true ? SpecialColor.green() : SpecialColor.red();
                 DataPopup.IsOpen = true;
                 await Task.Delay(2000);
