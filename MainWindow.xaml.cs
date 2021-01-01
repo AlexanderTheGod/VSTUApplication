@@ -51,5 +51,16 @@ namespace VSTUApp {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             mainContentControl.Content = mPage;
         }
+
+        /// <summary>
+        /// управление состоянием попапа, первый параметр - ссылка на попап, второй параметр - состояние (true - открыть, false - закрыть)
+        /// </summary>
+        /// <param name="popup"></param>
+        /// <param name="status"></param>
+        public static void controlPopup(Grid popup, bool status) {
+            popup.IsEnabled = status;
+            popup.Opacity = status ? 1 : 0;
+            popup.IsHitTestVisible = status ? true : false;
+        }
     }
 }

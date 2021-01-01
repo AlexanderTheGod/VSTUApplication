@@ -39,7 +39,7 @@
                 Foreground="white" 
                 Background="#3E94D1" 
                 Cursor="Hand" 
-                BorderBrush="#FF3E94D1" Click="onPreviousPage_Click">
+                BorderBrush="#FF3E94D1">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <BeginStoryboard>
