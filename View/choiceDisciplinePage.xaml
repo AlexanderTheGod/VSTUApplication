@@ -694,7 +694,7 @@
               IsHitTestVisible="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="Auto" MaxWidth="800"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -719,7 +719,7 @@
                     Grid.Row="1"
                     Panel.ZIndex="11">
                 <StackPanel HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" Margin="0">
+                            VerticalAlignment="Center">
 
                     <!--кнопака крестика-->
                     <Button Name="closePopup2"
@@ -783,11 +783,11 @@
 
                     <TextBlock Name="removeContent"
                                FontSize="22"
-                               MaxWidth="670"
+                               MaxWidth="800"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
                                Foreground="#3E94D1"
-                               Margin="65,15"/>
+                               Padding="65,15"/>
 
                     <!--кнопка добавления-->
                     <Button Name="removeData"

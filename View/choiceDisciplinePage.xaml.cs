@@ -21,6 +21,11 @@ namespace VSTUApp.View {
         public choiceDisciplinePage(string way) {
             InitializeComponent();
 
+            if (way == "toHeader")
+                onPreviousPage.Content = "ЗАКРЫТЬ";
+            else
+                onPreviousPage.Content = "ВЕРНУТЬСЯ НАЗАД";
+
             //определение следующей страницы
             goTo = way; 
         }
@@ -38,6 +43,9 @@ namespace VSTUApp.View {
             if (goTo == "toStart" || goTo == "toResults" || goTo == "toCreate") {
                 MainWindow.Page.mainContentControl.Content = MainWindow.mPage;
             } 
+            if (goTo == "toHeader") {
+                MainWindow.controlPopup(MainWindow.Page.headerContentControl, false);
+            }
         }
 
         /// <summary>
@@ -74,7 +82,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void addButton_Click(object sender, RoutedEventArgs e) {
-            confirmData.Content = "Добавить";
+            confirmData.Content = "ДОБАВИТЬ";
             MainWindow.controlPopup(fakePopup, true);
         }
 
@@ -96,7 +104,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void confirmData_Click(object sender, RoutedEventArgs e) {
-            if (confirmData.Content.ToString() == "Добавить") {
+            if (confirmData.Content.ToString() == "ДОБАВИТЬ") {
                 Button button = new Button();
                 button.Style = listDisciplines.Resources["mainButtonStyle"] as Style;
                 button.Content = nameOfNewDiscipline.Text;
@@ -148,7 +156,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void editMe(object sender, RoutedEventArgs e) {
-            confirmData.Content = "Редактировать";
+            confirmData.Content = "РЕДАКТИРОВАТЬ";
             editableDiscipline = sender as Button;
             MainWindow.controlPopup(fakePopup, true);
         }

@@ -57,10 +57,31 @@ namespace VSTUApp {
         /// </summary>
         /// <param name="popup"></param>
         /// <param name="status"></param>
-        public static void controlPopup(Grid popup, bool status) {
+        public static void controlPopup(UIElement popup, bool status) {
             popup.IsEnabled = status;
             popup.Opacity = status ? 1 : 0;
             popup.IsHitTestVisible = status ? true : false;
+        }
+
+        /// <summary>
+        /// страница вкладки шапки "о нас"
+        /// </summary>
+        private static aboutProgrammPage aPP = new aboutProgrammPage();
+        /// <summary>
+        /// навигация по шапке
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void navButton_Click(object sender, RoutedEventArgs e) {
+            if (!headerContentControl.IsEnabled)
+                controlPopup(headerContentControl, true);
+
+            if ((sender as Button).Content.ToString() == "Теоретиеский материал")
+                headerContentControl.Content = new choiceDisciplinePage("toHeader");
+            else if ((sender as Button).Content.ToString() == "Справка")
+                ;
+            else
+                headerContentControl.Content = aPP;
         }
     }
 }

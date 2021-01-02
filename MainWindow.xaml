@@ -106,11 +106,14 @@
                 </Style>
             </StackPanel.Resources>
             <Button Name="navButton1" 
-                    Content="Теоретиеский материал"/>
+                    Content="Теоретиеский материал"
+                    Click="navButton_Click"/>
             <Button Name="navButton2" 
-                    Content="Справка"/>
+                    Content="Справка"
+                    Click="navButton_Click"/>
             <Button Name="navButton3" 
-                    Content="О программе"/>
+                    Content="О программе"
+                    Click="navButton_Click"/>
         </StackPanel>
         
         <!--учетная запись-->

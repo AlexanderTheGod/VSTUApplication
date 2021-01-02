@@ -57,6 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="Placeholder.cs" />
     <Compile Include="SpecialColor.cs" />
+    <Compile Include="View\aboutProgrammPage.xaml.cs">
+      <DependentUpon>aboutProgrammPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\choiceDisciplinePage.xaml.cs">
       <DependentUpon>choiceDisciplinePage.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\aboutProgrammPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\choiceDisciplinePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
