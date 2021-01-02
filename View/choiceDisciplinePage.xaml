@@ -682,5 +682,159 @@
             </Border>
 
         </Grid>
-    </Grid>
+
+        <!--фейковый попап для предупреждения-->
+        <Grid Name="fakePopup2"
+              Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.RowSpan="2"
+              IsEnabled="False"
+              Opacity="0"
+              IsHitTestVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" MaxWidth="800"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto" MaxHeight="900"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <!--фон попапа-->
+            <Border Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="3"
+                  Background="#99EFEFEF"
+                  Panel.ZIndex="10"/>
+
+            <!--основное содержимое попапа-->
+            <Border BorderBrush="#3E94D1"
+                    BorderThickness="2"
+                    Background="#EFEFEF"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Panel.ZIndex="11">
+                <StackPanel HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" Margin="0">
+
+                    <!--кнопака крестика-->
+                    <Button Name="closePopup2"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            Width="50"
+                            Height="50"
+                            HorizontalAlignment="Right"
+                            Cursor="Hand" 
+                            Background="#EFEFEF"
+                            BorderThickness="0" Click="closePopup_Click">
+                        <Viewbox Margin="10">
+                            <Grid>
+                                <Line x:Name="line12" X1="0" Y1="0" X2="100" Y2="100" Stroke="#3E94D1" StrokeThickness="7"/>
+                                <Line x:Name="line22" X1="0" Y1="100" X2="100" Y2="0" Stroke="#3E94D1" StrokeThickness="7"/>
+                            </Grid>
+                        </Viewbox>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                                Storyboard.TargetName="line12"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                                Storyboard.TargetName="line22"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#EFEFEF" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                                Storyboard.TargetName="line12"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                                Storyboard.TargetName="line22"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <TextBlock Name="removeContent"
+                               FontSize="22"
+                               MaxWidth="670"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="#3E94D1"
+                               Margin="65,15"/>
+
+                    <!--кнопка добавления-->
+                    <Button Name="removeData"
+                            Grid.ColumnSpan="3"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Height="65"
+                            Content="УДАЛИТЬ"
+                            Background="#EFEFEF"
+                            BorderThickness="0"
+                            Foreground="#3E94D1"
+                            FontWeight="SemiBold"
+                            FontSize="22"
+                            Cursor="Hand" Click="removeData_Click">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#EFEFEF" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        </Grid>
 </UserControl>

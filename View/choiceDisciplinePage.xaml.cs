@@ -84,7 +84,10 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void closePopup_Click(object sender, RoutedEventArgs e) {
-            MainWindow.controlPopup(fakePopup, false);
+            if (fakePopup.IsEnabled)
+                MainWindow.controlPopup(fakePopup, false);
+            else
+                MainWindow.controlPopup(fakePopup2, false);
         }
 
         /// <summary>
@@ -175,16 +178,31 @@ namespace VSTUApp.View {
             }
         }
         /// <summary>
+        /// удаляемый элемент
+        /// </summary>
+        private Button elementForRemove = null;
+        /// <summary>
         /// удаление элемента 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void removeMe(object sender, RoutedEventArgs e) {
-            listDisciplines.Children.Remove(sender as Button);
+            removeContent.Text = "Вы действительно хотите удалить \"" + (sender as Button).Content.ToString() + "\"? Это действие приведет к удалению всех тестов данной дисциплины";
+            MainWindow.controlPopup(fakePopup2, true);
+            elementForRemove = sender as Button;
+        }
+        /// <summary>
+        /// подтверждение удаления дисциплины
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void removeData_Click(object sender, RoutedEventArgs e) {
+            listDisciplines.Children.Remove(elementForRemove);
             foreach (Button button in listDisciplines.Children) {
                 button.Style = listDisciplines.Resources["mainButtonStyle"] as Style;
                 button.Click -= removeMe;
             }
+            MainWindow.controlPopup(fakePopup2, false);
             addButton.IsEnabled = editButton.IsEnabled = headerDisciplines.IsEnabled = true;
             addButton.Opacity = editButton.Opacity = headerDisciplines.Opacity = 1;
             removeButton.Content = "Удалить";
