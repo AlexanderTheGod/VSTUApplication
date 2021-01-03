@@ -18,34 +18,38 @@ namespace VSTUApp.View {
     /// Логика взаимодействия для choiceDisciplinePage.xaml
     /// </summary>
     public partial class choiceDisciplinePage : UserControl {
-        public choiceDisciplinePage(string way) {
+        public choiceDisciplinePage(UserControl way, bool isHead=false) {
             InitializeComponent();
 
-            if (way == "toHeader")
+            if (isHead)
                 onPreviousPage.Content = "ЗАКРЫТЬ";
-            else
+            else {
                 onPreviousPage.Content = "ВЕРНУТЬСЯ НАЗАД";
+                goTo = way;
+            }
 
             //определение следующей страницы
-            goTo = way; 
+            isHeader = isHead;
         }
         /// <summary>
         /// определение следующей страницы
         /// </summary>
-        private static string goTo;
-
+        private static UserControl goTo;
+        /// <summary>
+        /// было ли вызвано из шапки
+        /// </summary>
+        private static bool isHeader;
         /// <summary>
         /// возврат на страницу назад
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void onPreviousPage_Click(object sender, RoutedEventArgs e) {
-            if (goTo == "toStart" || goTo == "toResults" || goTo == "toCreate") {
-                MainWindow.Page.mainContentControl.Content = MainWindow.mPage;
-            } 
-            if (goTo == "toHeader") {
+            if (isHeader) {
                 MainWindow.controlPopup(MainWindow.Page.headerContentControl, false);
-            }
+                isHeader = false;
+            } else
+                MainWindow.Page.mainContentControl.Content = goTo;
         }
 
         /// <summary>

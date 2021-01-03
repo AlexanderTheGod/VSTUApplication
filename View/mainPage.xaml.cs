@@ -73,7 +73,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void startTest_Click(object sender, RoutedEventArgs e) {
-            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage("toStart");
+            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage(this, false);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void checkResults_Click(object sender, RoutedEventArgs e) {
-            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage("toResults");
+            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage(this, false);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace VSTUApp.View {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void createTest_Click(object sender, RoutedEventArgs e) {
-            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage("toCreate");
+            MainWindow.Page.mainContentControl.Content = new choiceDisciplinePage(this, false);
         }
 
         private static string editorPassword = "12345";

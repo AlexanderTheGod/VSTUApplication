@@ -77,7 +77,7 @@ namespace VSTUApp {
                 controlPopup(headerContentControl, true);
 
             if ((sender as Button).Content.ToString() == "Теоретиеский материал")
-                headerContentControl.Content = new choiceDisciplinePage("toHeader");
+                headerContentControl.Content = new choiceDisciplinePage(null, true);
             else if ((sender as Button).Content.ToString() == "Справка")
                 ;
             else
