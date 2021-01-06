@@ -78,8 +78,8 @@ namespace VSTUApp {
 
             if ((sender as Button).Content.ToString() == "Теоретиеский материал")
                 headerContentControl.Content = new choiceDisciplinePage(null, true);
-            else if ((sender as Button).Content.ToString() == "Справка")
-                ;
+            //else if ((sender as Button).Content.ToString() == "Справка")
+            //    ;
             else
                 headerContentControl.Content = aPP;
         }

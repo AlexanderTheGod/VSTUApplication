@@ -21,6 +21,7 @@ namespace VSTUApp.View {
         public choiceDisciplinePage(UserControl way, bool isHead=false) {
             InitializeComponent();
 
+            //определение является ли шапкой
             if (isHead)
                 onPreviousPage.Content = "ЗАКРЫТЬ";
             else {
@@ -30,7 +31,17 @@ namespace VSTUApp.View {
 
             //определение следующей страницы
             isHeader = isHead;
+
+            tPage = new theoryPage();
+
+            //событие для перехода на следующую страницу
+            foreach (Button button in listDisciplines.Children)
+                button.Click += goToNextPage;
         }
+        /// <summary>
+        /// страница теоретического материала
+        /// </summary>
+        private static theoryPage tPage = null;
         /// <summary>
         /// определение следующей страницы
         /// </summary>
@@ -50,6 +61,15 @@ namespace VSTUApp.View {
                 isHeader = false;
             } else
                 MainWindow.Page.mainContentControl.Content = goTo;
+        }
+
+        /// <summary>
+        /// Переход на следующую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void goToNextPage(object sender, RoutedEventArgs e) {
+            MainWindow.Page.headerContentControl.Content = tPage;
         }
 
         /// <summary>

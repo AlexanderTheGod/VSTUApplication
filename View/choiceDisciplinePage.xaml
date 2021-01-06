@@ -836,5 +836,5 @@
                 </StackPanel>
             </Border>
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>

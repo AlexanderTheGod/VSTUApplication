@@ -39,7 +39,7 @@
                 Foreground="white" 
                 Background="#3E94D1" 
                 Cursor="Hand" 
-                BorderBrush="#FF3E94D1">
+                BorderBrush="#FF3E94D1" Click="onPreviousPage_Click">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <BeginStoryboard>
@@ -72,8 +72,8 @@
             </Button.Triggers>
         </Button>
 
-        <!--кнопка возврата назад-->
-        <Button Name="closeHead"
+        <!--кнопка закрытия окна шапки-->
+        <Button Name="closeTheory"
                 Content="ЗАКРЫТЬ"
                 Grid.Column="2" Grid.Row="0"
                 FontSize="20" 
@@ -81,7 +81,7 @@
                 Foreground="white" 
                 Background="#3E94D1" 
                 Cursor="Hand" 
-                BorderBrush="#FF3E94D1">
+                BorderBrush="#FF3E94D1" Click="closeTheory_Click">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <BeginStoryboard>
@@ -162,14 +162,492 @@
                                            Text="Theme"/>
                                 <TextBlock Style="{StaticResource text}" 
                                            Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
-                                <Image Source="Karpenko.jpeg"/>
+                                <!--<Image Source="Karpenko.jpeg"/>-->
+                                <Border Width="300"
+                                        CornerRadius="5"
+                                         Height="400">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="Karpenko.jpeg"/>
+                                    </Border.Background>
+                                </Border>
                             </StackPanel>
-                            
+
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </Border>
 
+            <!--навигация по теории-->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Visible"
+                      Grid.Column="1"
+                      Background="#EFEFEF">
+
+            </ScrollViewer>
+
+        </Grid>
+
+        <!--фейковый попап для редактирования-->
+        <Grid Name="fakePopup"
+              Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.RowSpan="2"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto" MaxHeight="900"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--фон попапа-->
+            <Border Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="3"
+                  Background="#99EFEFEF"
+                  Panel.ZIndex="10"/>
+
+            <!--основное содержимое попапа-->
+            <Border BorderBrush="#3E94D1"
+                    BorderThickness="2"
+                    Background="#EFEFEF"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Panel.ZIndex="11">
+                <StackPanel HorizontalAlignment="Center" 
+                            VerticalAlignment="Center">
+
+                    <!--кнопака крестика-->
+                    <Button Name="closePopup"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            Width="50"
+                            Height="50"
+                            HorizontalAlignment="Right"
+                            Cursor="Hand" 
+                            Background="#EFEFEF"
+                            BorderThickness="0" Click="closePopup_Click">
+                        <Viewbox Margin="10">
+                            <Grid>
+                                <Line x:Name="line12" X1="0" Y1="0" X2="100" Y2="100" Stroke="#3E94D1" StrokeThickness="7"/>
+                                <Line x:Name="line22" X1="0" Y1="100" X2="100" Y2="0" Stroke="#3E94D1" StrokeThickness="7"/>
+                            </Grid>
+                        </Viewbox>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                                Storyboard.TargetName="line12"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                                Storyboard.TargetName="line22"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#EFEFEF" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                                Storyboard.TargetName="line12"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                                Storyboard.TargetName="line22"
+                                            Storyboard.TargetProperty="(Line.Stroke).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <!--редактирование-->
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" MaxWidth="800"
+                                  VerticalScrollBarVisibility="Visible"
+                                  MaxHeight="500">
+                        <StackPanel Margin="65,0">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="Padding" Value="15"/>
+                                    <Setter Property="Background" Value="#EFEFEF"/>
+                                    <Setter Property="Margin" Value="0,15,0,0"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="BorderBrush" Value="#3E94D1"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                    <Setter Property="AcceptsReturn" Value="True"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="TextBoxBase">
+                                                <Border CornerRadius="10" 
+                                            Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ScrollViewer x:Name="PART_ContentHost"
+                                                    Focusable="false"
+                                                    HorizontalScrollBarVisibility="Hidden"
+                                                    VerticalScrollBarVisibility="Hidden"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+
+                                </Style>
+                            </StackPanel.Resources>
+                            <Label Content="Создание новой темы"
+                                   HorizontalContentAlignment="Center"
+                                   VerticalContentAlignment="Center"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   Foreground="#3E94D1"/>
+
+                            <TextBox Name="nameTheme"/>
+
+                            <!--поля для ввода информации-->
+                            <StackPanel Name="mainInfoTheme"
+                                        Margin="0,15,0,0">
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Padding" Value="15"/>
+                                        <Setter Property="Background" Value="#EFEFEF"/>
+                                        <Setter Property="Margin" Value="0,15,0,0"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="FontSize" Value="22"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Setter Property="BorderBrush" Value="#3E94D1"/>
+                                        <Setter Property="BorderThickness" Value="2"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="TextBoxBase">
+                                                    <Border CornerRadius="10" 
+                                                            Background="{TemplateBinding Background}" 
+                                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition Width="50"/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <ScrollViewer x:Name="PART_ContentHost"
+                                                                          Grid.Column="0"
+                                                                        Focusable="false"
+                                                                        HorizontalScrollBarVisibility="Hidden"
+                                                                        VerticalScrollBarVisibility="Hidden"/>
+
+                                                            <Button Name="deleteElement"
+                                                                    Grid.Column="1"
+                                                                    Foreground="#3E94D1"
+                                                                    Background="#EFEFEF"
+                                                                    BorderBrush="#3E94D1"
+                                                                    Cursor="Hand"
+                                                                    Tag="text"
+                                                                    BorderThickness="2,0,0,0" Click="deleteElement_Click">
+                                                                <Button.Template>
+                                                                    <ControlTemplate TargetType="Button">
+                                                                        <Border CornerRadius="0,10,10,0"
+                                                                                BorderBrush="#3E94D1"
+                                                                                BorderThickness="2,0,0,0"
+                                                                                Background="{TemplateBinding Background}">
+                                                                            <Grid>
+                                                                                <TextBlock Text="+"
+                                                                                       Foreground="{TemplateBinding Foreground}"
+                                                                                       HorizontalAlignment="Center"
+                                                                                       TextAlignment="Center"
+                                                                                           FontSize="22"
+                                                                                       VerticalAlignment="Center">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="45"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </ControlTemplate>
+                                                                </Button.Template>
+                                                                <Button.Triggers>
+                                                                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation To="#3E94D1" 
+                                                                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                                <ColorAnimation To="White" 
+                                                                                    Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </EventTrigger>
+                                                                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation To="#EFEFEF" 
+                                                                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                                <ColorAnimation To="#3E94D1" 
+                                                                                    Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </EventTrigger>
+                                                                </Button.Triggers>
+                                                            </Button>
+
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Margin" Value="0,15,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Label">
+                                                    <Border BorderBrush="#3E94D1"
+                                                            BorderThickness="2"
+                                                            CornerRadius="10"
+                                                            MaxWidth="{Binding ElementName=nameTheme, Path=ActualWidth}"
+                                                            HorizontalAlignment="Center">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition Width="50"/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Border Grid.Column="0" 
+                                                                    CornerRadius="10,0,0,10"
+                                                                    MaxWidth="{Binding ElementName=nameTheme, Path=ActualWidth}"
+                                                                    Width="{TemplateBinding Width}"
+                                                                    MinHeight="150"
+                                                                    MinWidth="150">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Tag}"
+                                                                                Stretch="UniformToFill"/>
+                                                                </Border.Background>
+                                                            </Border>
+
+                                                            <Button Name="deleteElement"
+                                                                    Background="#EFEFEF"
+                                                                    Cursor="Hand"
+                                                                    Foreground="#3E94D1"
+                                                                    Tag="image"
+                                                                    Grid.Column="1" Click="deleteElement_Click">
+                                                                <Button.Template>
+                                                                    <ControlTemplate>
+                                                                        <Border CornerRadius="0,10,10,0"
+                                                                                BorderBrush="#3E94D1"
+                                                                                BorderThickness="2,0,0,0"
+                                                                                Background="{TemplateBinding Background}">
+                                                                            <Grid>
+                                                                                <TextBlock Text="+"
+                                                                                           FontWeight="SemiBold"
+                                                                                           Foreground="{TemplateBinding Foreground}"
+                                                                                           VerticalAlignment="Center"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           FontSize="22"
+                                                                                           TextAlignment="Center">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="45"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </ControlTemplate>
+                                                                </Button.Template>
+                                                                <Button.Triggers>
+                                                                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation To="#3E94D1" 
+                                                                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                                <ColorAnimation To="White" 
+                                                                                    Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </EventTrigger>
+                                                                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation To="#EFEFEF" 
+                                                                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                                <ColorAnimation To="#3E94D1" 
+                                                                                    Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                                                                    FillBehavior="HoldEnd" 
+                                                                                    Duration="0:0:0.05"/>
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </EventTrigger>
+                                                                </Button.Triggers>
+                                                            </Button>
+
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+                                
+                                <!--<TextBox Name="text1"/>-->
+
+                                <!--<Label Tag="C:\Users\Домашний\Desktop\h9rOWxPIW_I.jpg"/>-->
+
+                            </StackPanel>
+
+                            <Grid Margin="0,15" MinWidth="600">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#EFEFEF"/>
+                                        <Setter Property="BorderBrush" Value="#3E94D1"/>
+                                        <Setter Property="Foreground" Value="#3E94D1"/>
+                                        <Setter Property="FontSize" Value="22"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="BorderThickness" Value="2"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border x:Name="brdr" 
+                                                Padding="15"
+                                                TextBlock.Foreground="{TemplateBinding Foreground}" 
+                                                Background="{TemplateBinding Background}" 
+                                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                                BorderBrush="#3E94D1"
+                                                CornerRadius="10">
+                                                        <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextWrapping="Wrap"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                                        <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation To="#EFEFEF" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                                        <ColorAnimation To="#3E94D1" 
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Resources>
+
+                                <Button Name="addTextButton" Content="Добавить текст"        Grid.Column="0" Margin="0,0,7.5,0" Click="addTextButton_Click"/>
+                                <Button Name="addImageButton" Content="Добавить изображение" Grid.Column="1" Margin="7.5,0,0,0" Click="addImageButton_Click"/>
+                            </Grid>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                    <!--подтвержедине действия-->
+                    <Button Name="confirmData"
+                            Grid.ColumnSpan="3"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Height="65"
+                            Content="СОЗДАТЬ"
+                            Background="#EFEFEF"
+                            BorderThickness="0"
+                            Foreground="#3E94D1"
+                            FontWeight="SemiBold"
+                            FontSize="22"
+                            Cursor="Hand">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#3E94D1" 
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                        <ColorAnimation To="White" 
+                                            Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                            FillBehavior="HoldEnd" 
+                                            Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#EFEFEF" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                        <ColorAnimation To="#3E94D1" 
+                                        Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                        FillBehavior="HoldEnd" 
+                                        Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </StackPanel>
+            </Border>
         </Grid>
     </Grid>
 </UserControl>
